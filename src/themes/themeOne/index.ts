@@ -7,6 +7,7 @@ const theme: MyThemeType = {
     primary: '#00A3FF',
     primary_50: '#E5F6FF',
     secondary_500: '#1E2749',
+    neutral: '#F2F2F2',
     neutral_50: '#F9FAFA',
     neutral_100: '#EDF0F1',
     neutral_200: '#E1E5E8',
@@ -25,6 +26,7 @@ const theme: MyThemeType = {
       start: '#29C0E9',
       end: '#1285CF',
     },
+    primaryButton: '#222222',
   },
   dark: false,
 };

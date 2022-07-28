@@ -11,7 +11,7 @@ const screenOptions = {
 const AuthenticationStack: FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName="IntroScreen"
+      initialRouteName="RegisterOneScreen"
       screenOptions={screenOptions}>
       <Stack.Screen name="RegisterOneScreen" component={SignupOne} />
       <Stack.Screen name="RegisterTwoScreen" component={SignupTwo} />
