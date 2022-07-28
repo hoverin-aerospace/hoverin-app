@@ -21,6 +21,8 @@ export interface Colors {
     start: string;
     end: string;
   };
+  primaryButton?: string;
+  neutral?: string;
 }
 export interface MyThemeType {
   colors: Colors;

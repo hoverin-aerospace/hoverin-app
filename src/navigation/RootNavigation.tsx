@@ -1,12 +1,13 @@
 import {Text, View} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import {AuthenticationStack} from './stackNavigators';
 import {ThemeOne} from '@themes';
 import {NavigationContainer} from '@react-navigation/native';
 
-const RootNavigation = () => {
+const RootNavigation: FC = () => {
   return (
-    <NavigationContainer>
+    // @ts-ignore:  //Added for ignoring next line code
+    <NavigationContainer theme={ThemeOne}>
       <AuthenticationStack />
     </NavigationContainer>
   );
