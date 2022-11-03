@@ -21,6 +21,7 @@ const styles = ({colors}: {colors?: Colors}) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
+      borderRadius: 5,
     },
   });
 
