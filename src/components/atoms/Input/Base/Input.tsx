@@ -36,6 +36,7 @@ const Input: FC<MyTextInputProps> = props => {
           onBlur={() => setFocus(false)}
           style={[styles({colors}).input]}
           placeholder={placeholder}
+          placeholderTextColor={colors.neutral_700}
           {...props}
         />
         {rightIcon}

@@ -23,7 +23,7 @@ const SignupTwo = ({navigation}: any) => {
     <View style={{justifyContent: 'space-between', flex: 1}}>
       <BackButton navigation={navigation} />
       <ScrollView>
-        <View style={{marginHorizontal: 20}}>
+        <View style={{marginHorizontal: 15}}>
           <View style={{alignItems: 'center'}}>
             <HoverInIcon height={40} />
           </View>
@@ -88,7 +88,7 @@ const SignupTwo = ({navigation}: any) => {
           </KeyboardAvoidingView>
         </View>
       </ScrollView>
-      <View style={{marginHorizontal: 20}}>
+      <View style={{marginHorizontal: 15}}>
         <Button
           type="PRIMARY"
           loading={phone}

@@ -15,13 +15,14 @@ const styles = ({colors}: {colors?: Colors}) =>
       paddingLeft: 5,
     },
     inputBox: {
-      paddingHorizontal: 10,
+      paddingHorizontal: 20,
+      paddingVertical: 2,
       backgroundColor: colors?.neutral,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
-      borderRadius: 5,
+      borderRadius: 100,
     },
   });
 

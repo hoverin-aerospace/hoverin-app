@@ -22,7 +22,10 @@ export interface Colors {
     end: string;
   };
   primaryButton?: string;
+  primaryBorderButton?: string;
   neutral?: string;
+  bottomTabBackground?: string;
+  green?: string;
 }
 export interface MyThemeType {
   colors: Colors;
