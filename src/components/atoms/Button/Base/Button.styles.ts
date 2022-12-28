@@ -8,7 +8,7 @@ const styles = ({colors}: StylesDef) =>
       width: '100%',
       paddingVertical: 15,
       backgroundColor: colors?.primaryButton,
-      borderRadius: 4,
+      borderRadius: 100,
     },
     PRIMARY_text: {
       color: colors?.shades_white,
@@ -22,9 +22,9 @@ const styles = ({colors}: StylesDef) =>
       width: '100%',
       paddingVertical: 15,
       backgroundColor: colors?.shades_white,
-      borderRadius: 4,
-      borderWidth: 2,
-      borderColor: colors?.primaryButton,
+      borderRadius: 100,
+      borderWidth: 1,
+      borderColor: colors?.primaryBorderButton,
     },
     SECONDARY_text: {
       color: colors?.primaryButton,

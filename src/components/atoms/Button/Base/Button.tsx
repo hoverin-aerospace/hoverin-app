@@ -43,7 +43,6 @@ const CustomButton: FC<any> = ({
         };
     }
   };
-  console.log(type);
   return (
     <>
       {loading ? (

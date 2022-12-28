@@ -27,6 +27,9 @@ const theme: MyThemeType = {
       end: '#1285CF',
     },
     primaryButton: '#222222',
+    primaryBorderButton: '#E3DFE3',
+    bottomTabBackground: '#FDFDF6',
+    green: '#DEF5E5',
   },
   dark: false,
 };
