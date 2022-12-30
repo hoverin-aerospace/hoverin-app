@@ -26,6 +26,7 @@ export interface Colors {
   neutral?: string;
   bottomTabBackground?: string;
   green?: string;
+  black?: string;
 }
 export interface MyThemeType {
   colors: Colors;

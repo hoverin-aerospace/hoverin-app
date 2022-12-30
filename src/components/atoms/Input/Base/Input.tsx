@@ -5,7 +5,6 @@ import {useTheme} from '@react-navigation/native';
 import Error from 'react-native-vector-icons/MaterialIcons';
 import {MyTextInputProps} from './Input.type';
 
-// eye-off-outline
 const Input: FC<MyTextInputProps> = props => {
   const {colors} = useTheme();
   const {

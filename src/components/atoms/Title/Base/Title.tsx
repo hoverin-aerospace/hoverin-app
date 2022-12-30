@@ -1,10 +1,12 @@
 import {View} from 'react-native';
-import React, {FC} from 'react';
+import React, {FC, FunctionComponent} from 'react';
 import {TitleProps} from './Title.types';
 import styles from './Title.styles';
 import {useTheme} from '@react-navigation/native';
 import {Text} from '@atoms';
-const Title: FC<TitleProps> = ({title, style, textStyle}) => {
+
+const Title: FunctionComponent<TitleProps> = props => {
+  const {title, style, textStyle} = props;
   const {colors} = useTheme();
   return (
     <View style={style}>

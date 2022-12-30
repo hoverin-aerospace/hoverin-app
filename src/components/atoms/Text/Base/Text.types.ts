@@ -1,11 +1,11 @@
 import {TextProps as TP} from 'react-native';
 
 export enum FontFamily {
-  Inter_Black = 'Inter-Black',
-  Inter_Bold = 'Inter-Bold',
-  Inter_SemiBold = 'Inter-SemiBold',
-  Inter_Medium = 'Inter-Medium',
-  Inter_Regular = 'Inter-Regular',
+  Black = 'Inter-Black',
+  Bold = 'Inter-Bold',
+  SemiBold = 'Inter-SemiBold',
+  Medium = 'Inter-Medium',
+  Regular = 'Inter-Regular',
 }
 
 export interface TextProps extends TP {
