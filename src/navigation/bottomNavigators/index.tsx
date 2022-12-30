@@ -1,15 +1,18 @@
-import React, {FC} from 'react';
-import {Home} from '@screens';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {SCREENS} from '@utils';
-import {HomeStack} from '../stackNavigators';
-import {TouchableOpacity, View, TouchableNativeFeedback} from 'react-native';
-import {Text} from '@atoms';
-import {FacebookIcon} from 'src/assets/icons';
+import React, {FC, useEffect} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {color} from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import {Calendar, Crops, Home, Profile} from '@screens';
+import {SCREENS} from '@utils';
+import {Text} from '@atoms';
+import styles from './styles';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +20,7 @@ const screenOptions = {
   headerShown: false,
 };
 
-const BottomNav: FC = props => {
+const BottomNav: FC = () => {
   return (
     <Tab.Navigator
       screenOptions={screenOptions}
@@ -41,11 +44,11 @@ const BottomNav: FC = props => {
           ),
         }}
         name={SCREENS.PROFILE}
-        component={Home}
+        component={Crops}
       />
       <Tab.Screen
         options={{
-          tabBarLabel: 'Calendar',
+          tabBarLabel: SCREENS.CALENDAR,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons
               name="calendar-range"
@@ -54,8 +57,8 @@ const BottomNav: FC = props => {
             />
           ),
         }}
-        name={SCREENS.Stats}
-        component={Home}
+        name={SCREENS.CALENDAR}
+        component={Calendar}
       />
       <Tab.Screen
         options={{
@@ -65,22 +68,22 @@ const BottomNav: FC = props => {
           ),
         }}
         name={SCREENS.CROP}
-        component={Home}
+        component={Profile}
       />
     </Tab.Navigator>
   );
 };
+
+// Custom Bottom Nav Container
 function MyTabBar({state, descriptors, navigation}: any) {
   const {colors} = useTheme();
   return (
     <View
       style={{
         flexDirection: 'row',
-        // backgroundColor: colors.bottomTabBackground,
       }}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
-        const Ico = options.tabBarIcon;
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -89,27 +92,29 @@ function MyTabBar({state, descriptors, navigation}: any) {
             : route.name;
 
         const isFocused = state.index === index;
-
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           });
-
+          rotation.value = withTiming(1);
           if (!isFocused && !event.defaultPrevented) {
-            // The `merge: true` option makes sure that the params inside the tab screen are preserved
             navigation.navigate({name: route.name, merge: true});
           }
         };
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
+        const rotation = useSharedValue(0);
+        const animatedStyle = useAnimatedStyle(() => {
+          return {
+            transform: [{scaleX: rotation.value}],
+          };
+        });
+        useEffect(() => {
+          if (!isFocused) {
+            rotation.value = 0;
+          }
+        }, [isFocused]);
         return (
           <TouchableOpacity
             accessibilityRole="button"
@@ -117,26 +122,21 @@ function MyTabBar({state, descriptors, navigation}: any) {
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
-            onLongPress={onLongPress}
+            activeOpacity={1}
             style={{flex: 1, padding: 10}}>
             <View style={{alignItems: 'center'}}>
               {options?.tabBarIcon && (
-                <View
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: isFocused ? colors.green : 'transparent',
-                    paddingHorizontal: 20,
-                    paddingVertical: 5,
-                    borderRadius: 50,
-                  }}>
-                  <Ico color={isFocused ? colors.success_500 : '#222'} />
-                </View>
+                <AnimationIcon
+                  isFocused={isFocused}
+                  animatedStyle={animatedStyle}
+                  icon={options.tabBarIcon}
+                />
               )}
               <Text
                 textType="Paragraph_05"
                 style={{
                   color: isFocused ? colors.success_500 : '#222',
-                  fontWeight: isFocused ? '500' : 'normal',
+                  fontWeight: isFocused ? '700' : 'normal',
                   paddingTop: 2,
                 }}>
                 {label}
@@ -150,3 +150,26 @@ function MyTabBar({state, descriptors, navigation}: any) {
 }
 
 export default BottomNav;
+
+// Animation Content
+const AnimationIcon = (props: any) => {
+  const {colors} = useTheme();
+  const {isFocused, animatedStyle, icon} = props;
+  const Ico = icon;
+  return (
+    <View>
+      <Animated.View
+        style={[
+          {
+            backgroundColor: isFocused ? colors.green : 'transparent',
+          },
+          styles().box,
+          animatedStyle,
+        ]}
+      />
+      <View style={styles().iconBox}>
+        <Ico color={isFocused ? colors.success_500 : '#222'} />
+      </View>
+    </View>
+  );
+};

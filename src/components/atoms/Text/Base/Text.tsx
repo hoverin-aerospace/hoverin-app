@@ -20,15 +20,15 @@ const Text: FunctionComponent<TextProps> = props => {
     let color;
 
     if (invertColor) color = colors.shades_white;
-    else if (highlighted) color = colors.secondary_500;
-    else color = colors.neutral_700;
+    else if (highlighted) color = colors.black;
+    else color = colors.black;
 
     switch (textType) {
       case 'Heading_01':
         return {
           color,
           fontSize: 32,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: 40,
           textTransform: 'none',
         };
@@ -36,7 +36,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 28,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'none',
         };
@@ -44,7 +44,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 24,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'none',
         };
@@ -52,7 +52,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 20,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'none',
         };
@@ -60,7 +60,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 20,
-          fontFamily: FontFamily.Inter_Medium,
+          fontFamily: FontFamily.Medium,
           lineHeight: undefined,
           textTransform: 'none',
         };
@@ -68,7 +68,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 16,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'uppercase',
         };
@@ -76,7 +76,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 16,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: 20,
           textTransform: 'none',
         };
@@ -84,7 +84,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 16,
-          fontFamily: FontFamily.Inter_Medium,
+          fontFamily: FontFamily.Medium,
           lineHeight: 20,
           textTransform: 'none',
         };
@@ -92,7 +92,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 16,
-          fontFamily: FontFamily.Inter_Regular,
+          fontFamily: FontFamily.Regular,
           lineHeight: 20,
           textTransform: 'none',
         };
@@ -100,7 +100,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 14,
-          fontFamily: FontFamily.Inter_Regular,
+          fontFamily: FontFamily.Regular,
           lineHeight: 18.2,
           textTransform: 'none',
         };
@@ -108,7 +108,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 14,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'none',
         };
@@ -116,7 +116,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 12,
-          fontFamily: FontFamily.Inter_Regular,
+          fontFamily: FontFamily.Regular,
           lineHeight: 15.6,
           textTransform: 'none',
         };
@@ -124,7 +124,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 10,
-          fontFamily: FontFamily.Inter_Regular,
+          fontFamily: FontFamily.Regular,
           lineHeight: 15.6,
           textTransform: 'none',
         };
@@ -132,7 +132,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 10,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: 15.6,
           textTransform: 'none',
         };
@@ -141,7 +141,7 @@ const Text: FunctionComponent<TextProps> = props => {
         return {
           color,
           fontSize: 32,
-          fontFamily: FontFamily.Inter_Bold,
+          fontFamily: FontFamily.Bold,
           lineHeight: undefined,
           textTransform: 'none',
         };

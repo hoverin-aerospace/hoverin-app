@@ -26,6 +26,7 @@ const theme: MyThemeType = {
       start: '#29C0E9',
       end: '#1285CF',
     },
+    black: '#000',
     primaryButton: '#222222',
     primaryBorderButton: '#E3DFE3',
     bottomTabBackground: '#FDFDF6',

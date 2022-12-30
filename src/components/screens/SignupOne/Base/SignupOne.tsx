@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import {Button, Input, Text, Title} from '@atoms';
+import {Button, Text, Title} from '@atoms';
 import {FacebookIcon, GoogleIcon, HoverInIcon} from '../../../../assets/icons';
 import {useTheme} from '@react-navigation/native';
 import {Touchable} from '@atoms';

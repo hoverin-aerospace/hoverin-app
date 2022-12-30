@@ -7,7 +7,7 @@ export const AUTH_SCREENS = {
 };
 export const SCREENS = {
   HOME: 'Home',
-  Stats: 'Stats',
+  CALENDAR: 'Calendar',
   CROP: 'Crops',
   PROFILE: 'Profile',
 };
