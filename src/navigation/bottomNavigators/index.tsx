@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -10,7 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {Calendar, Crops, Home, Profile} from '@screens';
-import {SCREENS} from '@utils';
+import {SCREENS, TAB_SCREENS} from '@utils';
 import {Text} from '@atoms';
 import styles from './styles';
 
@@ -33,7 +33,7 @@ const BottomNav: FC = () => {
           ),
           tabBarBadge: 3,
         }}
-        name={SCREENS.HOME}
+        name={TAB_SCREENS.HOME}
         component={Home}
       />
       <Tab.Screen
@@ -43,7 +43,7 @@ const BottomNav: FC = () => {
             <Icon name="sun" color={color} size={24} />
           ),
         }}
-        name={SCREENS.PROFILE}
+        name={TAB_SCREENS.PROFILE}
         component={Crops}
       />
       <Tab.Screen
@@ -57,7 +57,7 @@ const BottomNav: FC = () => {
             />
           ),
         }}
-        name={SCREENS.CALENDAR}
+        name={TAB_SCREENS.CALENDAR}
         component={Calendar}
       />
       <Tab.Screen
@@ -67,7 +67,7 @@ const BottomNav: FC = () => {
             <Icon name="user" color={color} size={24} />
           ),
         }}
-        name={SCREENS.CROP}
+        name={TAB_SCREENS.CROP}
         component={Profile}
       />
     </Tab.Navigator>
@@ -92,27 +92,30 @@ function MyTabBar({state, descriptors, navigation}: any) {
             : route.name;
 
         const isFocused = state.index === index;
+
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           });
-          rotation.value = withTiming(1);
+          scaling.value = withTiming(1);
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate({name: route.name, merge: true});
           }
         };
 
-        const rotation = useSharedValue(0);
+        const scaling = useSharedValue(0);
         const animatedStyle = useAnimatedStyle(() => {
           return {
-            transform: [{scaleX: rotation.value}],
+            transform: [{scaleX: scaling.value}],
           };
         });
         useEffect(() => {
           if (!isFocused) {
-            rotation.value = 0;
+            scaling.value = 0;
+          } else {
+            onPress();
           }
         }, [isFocused]);
         return (
@@ -123,6 +126,7 @@ function MyTabBar({state, descriptors, navigation}: any) {
             testID={options.tabBarTestID}
             onPress={onPress}
             activeOpacity={1}
+            key={index}
             style={{flex: 1, padding: 10}}>
             <View style={{alignItems: 'center'}}>
               {options?.tabBarIcon && (
