@@ -11,3 +11,9 @@ export const SCREENS = {
   CROP: 'Crops',
   PROFILE: 'Profile',
 };
+export const TAB_SCREENS = {
+  HOME: 'MYHome',
+  CALENDAR: 'MYCalendar',
+  CROP: 'MYCrops',
+  PROFILE: 'MYProfile',
+};

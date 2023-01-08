@@ -9,13 +9,14 @@ export interface CheckBoxTextProps {
   setCheck: any;
   title: string;
   subText?: string;
+  containerStyle?: {};
 }
 
 const CheckboxText: FC<CheckBoxTextProps> = props => {
   const {colors} = useTheme();
-  const {check, setCheck, title, subText} = props;
+  const {check, setCheck, title, subText, containerStyle} = props;
   return (
-    <FlexBox style={{justifyContent: 'space-between'}}>
+    <FlexBox style={[containerStyle, {justifyContent: 'space-between'}]}>
       <FlexBox>
         <CheckBox
           disabled={false}
